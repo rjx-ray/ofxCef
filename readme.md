@@ -18,13 +18,11 @@ then compile the demo app itself
 ![image](images/app.png)
 
 ### Windows and Visual Studio
+* Tested with Windows 10, Visual Studio 15 and cef_binary_3.2987.1601.gf035232_windows32
 
-* Copy the content of the Chromium Embedded Framework 3 Build package in the folder libs/CEF/win32. For details, see the ofxCEF-README.txt included in the folder libs/CEF/win32.
-* Add libcef_dll_wrapper.vcxproj and the ZERO_CHECK.vcxproj to your existing Visaul Studio solution.
-* Link against libcef.lib.
-* Make sure the addon files in src/, libs/CEF/win32/include and libs/CEF/win32 are in your include path.
-* Ensure libcef_dll_wrapper is a dependency of your own project (Project Name > Project Dependencies).
-* Ensure libcef_dll_wrapper is referenced by your project (Project Name > References > Add New Reference).
-* You may have to change the Runtime Library of the libcef_dll_wrapper.vcxproj (see screenshot below).
-
-![image](images/VS-RuntimeLibrary.png)
+* Copy the content of the Chromium Embedded Framework 3 Build package into the folder libs/CEF/win32. 
+* Create VS project files by running cmake -G "Visual Studio 15" -DUSE_SANDBOX=Off from a Visual Studio command prompt in ofxCEF/libs/CEF/win32. -REQUIRES cmake V3.7.0
+* Open cef.sln and changed the C/C++ Code Generation properties for all projects to /MDd (debug) or /MD (release)
+* Build cef.sln - don't worry that ceftests doesn't build because of sandbox issues.
+* Check cefsimple and cefclient run OK
+* You should now be able to build and run example_ofxCEF
