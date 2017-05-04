@@ -22,6 +22,7 @@ int main(){
     ofApp * p = new ofApp();
 	p->cefgui = cefgui;
     ofRunApp( p );
+	CefShutdown();
     
 }
 
