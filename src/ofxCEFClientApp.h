@@ -17,7 +17,7 @@ public:
 
     void OnWebKitInitialized() OVERRIDE;
 
-	virtual void OnBeforeCommandLineProcessing( const CefString& process_type, CefRefPtr<CefCommandLine> command_line) {
+	void OnBeforeCommandLineProcessing( const CefString& process_type, CefRefPtr<CefCommandLine> command_line) OVERRIDE {
 #if defined(TARGET_OSX)
 
         
@@ -30,6 +30,10 @@ public:
         
         CefString frameScheduling(L"-enable-begin-frame-scheduling");
         command_line->AppendSwitch(frameScheduling);
+		
+		CefString enableFlash(L"--enable-system-flash");
+		command_line->AppendSwitch(enableFlash);
+
 #endif
 
 		//CefString singleProcess(L"-single-process");
