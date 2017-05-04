@@ -24,6 +24,8 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
     ofDrawBitmapMode mode;
     ofSetDrawBitmapMode(OF_BITMAPMODE_MODEL );
+
+	ofSetFrameRate(60);
 }
 
 //--------------------------------------------------------------
